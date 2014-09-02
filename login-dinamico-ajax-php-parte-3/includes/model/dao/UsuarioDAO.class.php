@@ -1,0 +1,41 @@
+<?php
+
+//Como iremos usar nesta classe o que foi setado para a classe Bean, é necessário importar a classe Bean aqui.
+require_once("../model/bean/Usuario.class.php");
+
+class UsuarioDAO{
+
+	function autenticaUsuario($usuario){
+	
+		/*
+			Aqui é o local onde deverá ser feita a validação dos dados em algum banco de dados.
+			Seja ele um arquivo XML, um SGBD como o MySQL, SQLServer, Oracle, etc...
+			
+			Após feita a verificação, este método deverá retornar uma resposta baseada no resultado da consulta feita.
+			
+			Vamos fazer apenas um teste com dados estáticos, mas vale lembrar que em um sistema comum, o correto é ter um banco de dados, 
+			e a verificação ser feita dinamicamente no mesmo.
+			
+			Não abordaremos aqui como faz pra consultar um banco de dados ou algo do tipo, pois material sobre isso há de sobra na web.
+			
+			Vamos então apenas testar os dados e retornar uma resposta à controller, que requisitará a View para exibí-la em tela ao usuário.			
+		
+		*/
+		
+		/* 
+			Se os dados estiverem corretos, retornará TRUE... Pois com isso, na classe View poderemos exibir a mensagem que quisermos, no formato que for melhor.
+			Está aqui a grande sacada de usar o Padrão MVC... 
+			Se quiséssemos que a view gerasse o código para um celular, ou um sistema desktop, simplesmente trocaríamos na Controller a view que ela estaria chamando.		
+		*/
+		if($usuario->getLogin() == 'admin' && $usuario->getSenha() == '123'){
+			return true;
+		}
+		else{
+			return false;
+		}
+		
+	}
+
+}
+
+?>
